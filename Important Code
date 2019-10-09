@@ -1,0 +1,12 @@
+# Disable select option using jquery
+
+disable depend on option value
+
+disable one option
+$("option[value='wc-processing']").attr("disabled", "disabled");
+
+disable one option and enable all other option
+$("option[value='wc-cancelled']").attr("disabled", "disabled").siblings().removeAttr("disabled");
+
+remove disable
+$("option[value='wc-cancelled']").removeAttr("disabled");
