@@ -1,0 +1,3 @@
+# webdev
+Title: jQuery How to Get Table Cell Value TD Value [4 ways]
+	Link: https://codepedia.info/jquery-get-table-cell-td-value-div/
