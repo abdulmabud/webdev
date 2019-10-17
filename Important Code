@@ -10,3 +10,9 @@ $("option[value='wc-cancelled']").attr("disabled", "disabled").siblings().remove
 
 remove disable
 $("option[value='wc-cancelled']").removeAttr("disabled");
+
+
+#http to https 
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
