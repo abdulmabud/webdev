@@ -30,3 +30,37 @@ RewriteCond %{REQUEST_URI} !(/$|\.) [NC]
 RewriteRule ^  %{REQUEST_URI}/ [R=302,L]
 
 
+
+// Image upload php start
+<?php
+
+
+if(isset($_POST['btnSub'])){
+    $names = $_POST['names'];
+    $file = $_FILES['file'];
+     $file_name = $_FILES['file']['name'];
+     $file_type = $_FILES['file']['type'];
+     $file_tmp_loc = $_FILES['file']['tmp_name'];
+     $file_store = "image/".$file_name;
+      if(move_uploaded_file($file_tmp_loc, $file_store)){
+          echo 'uploaded';
+      }
+      else
+      echo 'failed';
+}
+   
+
+?>
+
+<form action="" method="post" enctype="multipart/form-data">
+<input type="text" name="names">
+<input type="file" name="file">
+<input type="submit" name="btnSub">
+
+
+
+</form>
+
+// Image upload php end
+
+
