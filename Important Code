@@ -73,4 +73,9 @@ if(isset($_POST['btnSub'])){
     ?>
 //end php date
 
+//php custom date format
+    $date = date_create($row['visit_date']);
+    echo date_format($date, 'd-m-Y');
+//end php custom date format
+
 
