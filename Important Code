@@ -63,6 +63,108 @@ if(isset($_POST['btnSub'])){
 
 // Image upload php end
 
+
+//php multiple file upload start
+<?php 
+
+if(isset($_POST['file_sub'])){
+    $count = count($_FILES['file']['name']);
+    echo $count;
+    for($i=0; $i<$count; $i++){
+       
+        $file_name = $_FILES['file']['name'][$i];
+    
+        $file_tmp_loc = $_FILES['file']['tmp_name'][$i];
+        $file_store = "upload/".$file_name;
+        if(move_uploaded_file($file_tmp_loc, $file_store)){
+           echo "Upload Successfully";
+        }
+        else{
+           echo "Failed";
+        }
+    }
+   
+     
+     
+ }
+?>
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        .borderless td, .borderless th {
+                border: none;
+            }
+        label{
+            font-size: 120%;
+            
+        }
+        .ml-5{
+            margin-left: 100px !important;
+        }
+     table,  tr, td{
+            background-color: white;
+             border: none !important;
+     }
+    </style>
+  </head>
+  <body>
+    <div class="container mt-5">
+              <div class="row">
+                  <div class="col-8 offset-1 text-center">
+                     
+                      <form class="form-group" action="" method="POST" enctype="multipart/form-data">
+                      <table class="table m-auto borderless">
+                            <tr>
+                                <td class="text-right"><label class="mr-3">Name *</label></td>
+                                <td><input type="text" name="post_title" class="form-control"></td>
+                            </tr>
+                            
+                            <tr>
+                                <td class="text-right"><label for="" class="mr-3">Phone *</label></td>
+                                <td><input type="text" name="user_name" class="form-control"></td>
+                            </tr>
+                            <tr>
+                                <td class="text-right"><label for="" class="mr-3">Email</label></td>
+                                <td><input type="email" name="user_email" class="form-control"></td>
+                            </tr>
+                            <tr>
+                                <td class="text-right"><label for=""  class="mr-3">Upload File *</label></td>
+                                <td class="text-left"><input type="file" name="file[]" multiple></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td class="text-left"><input type="submit" value="Submit" name="file_sub" class="btn btn-primary btn-block"></td>
+                            </tr>
+                        </table>
+                    </form>  
+                    </div>
+              </div>
+          </div>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+    
+        $( '.footer-widgets' ).removeClass( 'col-4');
+    });
+    </script>
+      </body>
+</html>
+
+//php multiple file upload end
+
 //start php date
 
 <?php
