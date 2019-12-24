@@ -180,4 +180,40 @@ if(isset($_POST['file_sub'])){
     echo date_format($date, 'd-m-Y');
 //end php custom date format
 
+//start bootstrap modal
+
+<div class="container">
+         <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Launch demo modal
+        </button>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <h3> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Modi blanditiis dolor commodi eligendi possimus necessitatibus est doloribus hic ad praesentium, illo aliquam maxime rerum consequuntur sint culpa beatae qui nesciunt eos fugiat sed. Maxime architecto magnam voluptas ea porro tenetur quaerat magni incidunt cupiditate, recusandae nemo consequuntur illum beatae modi possimus veniam amet sapiente vel qui consequatur quo delectus dignissimos aut dolorem. Exercitationem saepe sapiente officiis assumenda dolore. Dolor tenetur excepturi aspernatur eum laborum accusantium, nihil dolorem. Maxime veniam recusandae corporis voluptas eius dolor facilis quisquam iste odit. Deleniti asperiores repellat suscipit pariatur iusto iste voluptate optio quibusdam animi error! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda, quo possimus iusto nemo obcaecati autem aliquid recusandae quas ut dolores!</h3>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+            </div>
+        </div>
+      </div>
+      
+         ## To change modal width change the modal-dialog class width. Set width auto and max-width for better result.
+
+
+
+//end boostrap modal
+
 
