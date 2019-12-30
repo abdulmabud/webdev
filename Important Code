@@ -216,4 +216,10 @@ if(isset($_POST['file_sub'])){
 
 //end boostrap modal
 
+// Start JS remove item from array by value
+        var index = jsarr.indexOf('item');
+        if (index !== -1) jsarr.splice(index, 1);
+        
+   // End JS remove item from array by value
+
 
