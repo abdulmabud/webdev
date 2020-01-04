@@ -1,0 +1,13 @@
+// Start Git Pull error
+# When commit from another device, but my pc already have some uncommted change. And I am try to pull the code. It's gives error
+error: Your local changes to the following files would be overwritten by merge:
+        resources/views/frontEnd/home.blade.php
+Please commit your changes or stash them before you merge.
+Aborting
+
+
+git reset --hard
+git pull
+
+
+// End Git Pull error
