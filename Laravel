@@ -1,0 +1,32 @@
+## Start laravel send mail using gmail
+change .env file
+
+MAIL_DRIVER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=webnstech@gmail.com
+MAIL_PASSWORD="webns@1234"
+MAIL_ENCRYPTION=tls
+
+In web.php
+Route::get('/mail','WelcomeController@mail');
+
+In controller
+use Mail;
+
+public function mail(){
+  $data['me'] = 'My Mail';
+
+        Mail::send('mail.index', $data, function ($message) {
+            $message->from('webnstech@gmail.com', 'Webns Tech Ltd');
+            $message->sender('webnstech@gmail.com', 'Webns Tech ltd');
+            $message->to('abdulmabudm@gmail.com', 'Abdul Mabud');
+            $message->cc('abdulmabudcse@gmail.com', 'Md Abdul Mabud');
+            $message->replyTo('john@johndoe.com', 'John Doe');
+            $message->subject('Nw Subject');
+            $message->priority(3);
+            $message->attach(public_path('custom/img/Freedom.jpg'));
+        });
+}
+
+## End laravel send mail using gmail
