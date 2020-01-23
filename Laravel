@@ -30,3 +30,27 @@ public function mail(){
 }
 
 ## End laravel send mail using gmail
+
+
+## Start Send email to multiple person with 100 seconds delay.  change in controller
+
+  $mails = ['abdulmabudcse@gmail.com', 'me@abdulmabud.com', 'abdulmabud@emedicine24.com', 'abdulmabudm@gmail.com'];
+        foreach($mails as $mail){
+            Mail::send('mail.index', $data, function ($message) use($mail) {
+                       
+                    $message->from('webnstech@gmail.com', 'Webns Tech Ltd');
+                    $message->sender('webnstech@gmail.com', 'Webns Tech ltd');
+                    $message->to($mail, 'Abdul Mabud');
+                    $message->cc('abdulmabudcse@gmail.com', 'Md Abdul Mabud');
+                    $message->replyTo('john@johndoe.com', 'John Doe');
+                    $message->subject('Newseeess Subject');
+                    $message->priority(3);
+                    $message->attach(public_path('custom/img/Freedom.jpg'));
+                
+            });
+
+            sleep(100);
+        }
+
+
+## End Send email to multiple person with 100 seconds delay.
