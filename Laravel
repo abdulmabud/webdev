@@ -54,3 +54,99 @@ public function mail(){
 
 
 ## End Send email to multiple person with 100 seconds delay.
+
+
+
+## Laravel Event Listener Practice
+
+step 1: php artisan make:event EventName
+step 2: php artisan make:listener ListenerName
+step 3: Rigister/Connect Event and Listener in EventServiceProvider.php file which is locate at App\Provider folder.
+step 4: Fire event from controller or web.php file or any other file using this code: event(new EventName()); and include use App\Events\EventName;
+   You can passs parameter via event(new EventName($name)); which is available on event __construct method. Then you can use it listener handle method. Below code example given:
+   
+# Event file (Like is event name)
+<?php
+
+namespace App\Events;
+
+use Illuminate\Broadcasting\Channel;
+use Illuminate\Broadcasting\InteractsWithSockets;
+use Illuminate\Broadcasting\PresenceChannel;
+use Illuminate\Broadcasting\PrivateChannel;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Queue\SerializesModels;
+
+class Like
+{
+    use Dispatchable, InteractsWithSockets, SerializesModels;
+
+    /**
+     * Create a new event instance.
+     *
+     * @return void
+     */
+   public $name;
+    public function __construct($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * Get the channels the event should broadcast on.
+     *
+     * @return \Illuminate\Broadcasting\Channel|array
+     */
+    public function broadcastOn()
+    {
+        return new PrivateChannel('channel-name');
+    }
+}
+
+# Listener File (Likes is listener name)
+<?php
+
+namespace App\Listeners;
+
+use App\Events\Like;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
+
+class Likes
+{
+    /**
+     * Create the event listener.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        
+    }
+
+    /**
+     * Handle the event.
+     *
+     * @param  PostCreated  $event
+     * @return void
+     */
+    public function handle(Like $event)
+    {
+        info('everything under cotroll');
+        // echo 'hello';
+        echo $event->name;
+    }
+}
+
+# In web.php
+Route::get('/eventlike', [TestController::class, 'eventLike']);
+
+# In controller 
+public function eventLike(Request $request){
+        event(new Like('My name is Abdul Mabud'));
+        // event(new PostCreated());
+    }
+ 
+ ## End Laravel Event Listener Practice
+
