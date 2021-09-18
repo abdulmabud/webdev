@@ -149,4 +149,56 @@ public function eventLike(Request $request){
     }
  
  ## End Laravel Event Listener Practice
-
+ 
+ 
+ ### Laravel Cache Practice
+ 
+ # Post comes from Cache memory. It helps to less pressure on the database because it's run few queries only.
+ # We save our post and its details on cache memory when Post created, updated, deleted. We need three event such as PostCreated, PostUpdated, PostDeleted. And one listener PostStoreCache.
+ all codes are given below:
+ Step 1: Create 3 event: PostCreated, PostUpdated, PostDeleted.
+ Step 2: Create 1 Listener: PostStoreCache.
+ Step 3: Three events register with one listener in EventServiceProivder File.
+ Step 4: Write dispatchesEvents property on Post model.
+ 
+ 
+ EventServiceProvider.php
+  protected $listen = [
+        PostCreated::class => [
+            PostStoreCache::class
+        ],
+        PostUpdated::class => [
+            PostStoreCache::class
+        ],
+        PostDeleted::class => [
+            PostStoreCache::class
+        ],
+    
+    ];
+ 
+ Listener: PostStoreCache.php
+ 
+ public function handle($event)
+    {
+        Cache::put('posts', $data['posts'] = Post::with('category')->get());
+    }
+ 
+ 
+ Model: Post.php
+  protected $dispatchesEvents = [
+        'created' => PostCreated::class,
+        'updated' => PostUpdated::class,
+        'deleted' => PostDeleted::class,
+    ];
+    
+    
+    Controller: PostController.php
+    
+     if(Cache::has('posts')){
+            $data['posts'] = Cache::get('posts');
+        }else{
+            $data['posts'] = Post::with('category')->get();
+        }
+        return view('post.index', $data);
+    
+ ### End Laravel Cache Practice
